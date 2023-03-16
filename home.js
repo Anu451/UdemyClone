@@ -70,6 +70,11 @@ const categoryList = [
 		],
 	},
 ];
+// Carousl Images
+
+const carouslImg = ['./bgimg.jpg', './slide2.png', './slide3.png'];
+
+// timer
 setInterval(display, 1000);
 let timer = document.getElementById('timer');
 
@@ -97,18 +102,22 @@ function display() {
 	}
 }
 
+// Variable declariation
+
 var displayCatergory = document.getElementById('displayCategory');
 var displaySub = document.querySelector('.dropdown-sub');
-// console.log(displayCatergory);
+
+// Display Category
 
 function displayArray(array) {
 	let displays = array.map(function (item) {
 		return `<li id="${item.category}" onmouseenter ="myFunction(${item.id})">${item.category}</li>`;
 	});
-	// console.log(displays);
 	displayCatergory.innerHTML = displays.join('');
 }
 displayArray(categoryList);
+
+// sub Catergory mapping - nested mapping
 
 function myFunction(e) {
 	let hoverId = e;
@@ -116,33 +125,46 @@ function myFunction(e) {
 		if (item.id === hoverId) {
 			return item;
 		}
-		// console.log(item);
 	});
-	// console.log(hoverId);
-	// console.log(filterItem);
 	let subDisplay = filterItem.map(function (item) {
 		let subItem = item.subCategory;
-		console.log(subItem);
+		// console.log(subItem);
 		let subMap = subItem.map(function (sub) {
 			return `<li>${sub}</li>`;
 		});
 		return subMap;
 	});
 	displaySub.innerHTML = subDisplay.join('');
-	// });
 }
 
 function mouseLeave() {
 	displaySub.style.display = 'none';
 }
 
+// caroul
+
+const imagesContent = document.querySelector('.images');
+
+// imagesContent.innerHTML = carouslImg[0];
+
+function displayImages(array) {
+	let imagesdisplay = array.map(function (item) {
+		return `<img src='${item}'></img>`;
+		// console.log(item);
+	});
+	// console.log(imagesdisplay);
+	imagesContent.innerHTML = imagesdisplay.join('');
+}
+displayImages(carouslImg);
+
 const left = document.querySelector('.left');
 const right = document.querySelector('.right');
+const carouslBtn = document.querySelector('.carsoulBtn');
 
-left.addEventListener('click', function (e) {
-	// console.log('left');
-	// console.log(e.target.innerHTML);
-	const targetImg = left.closest('div').id;
-	console.log(targetImg);
-	// console.log(e.target.id)
+left.addEventListener('click', function () {
+	console.log('hejdkjh');
+});
+
+right.addEventListener('click', function () {
+	console.log('lkhjh');
 });
