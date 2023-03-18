@@ -73,6 +73,7 @@ const categoryList = [
 // Carousl Images
 
 const carouslImg = ['./bgimg.jpg', './slide2.png', './slide3.png'];
+var imgChange = 0;
 
 // timer
 setInterval(display, 1000);
@@ -147,24 +148,36 @@ const imagesContent = document.querySelector('.images');
 
 // imagesContent.innerHTML = carouslImg[0];
 
-function displayImages(array) {
-	let imagesdisplay = array.map(function (item) {
-		return `<img src='${item}'></img>`;
-		// console.log(item);
-	});
+function displayImages(num) {
+	imagesContent.innerHTML = `<img src='${carouslImg[num]}'></img>`;
+	// console.log(item);
 	// console.log(imagesdisplay);
-	imagesContent.innerHTML = imagesdisplay.join('');
 }
-displayImages(carouslImg);
+displayImages(0);
+// imagesContent.innerHTML = imagesdisplay;
 
 const left = document.querySelector('.left');
 const right = document.querySelector('.right');
 const carouslBtn = document.querySelector('.carsoulBtn');
 
 left.addEventListener('click', function () {
-	console.log('hejdkjh');
+	console.log(carouslImg.indexOf());
+	if (imgChange === carouslImg.length - 1) {
+		imgChange = 0;
+	} else {
+		imgChange = imgChange + 1;
+	}
+	displayImages(imgChange);
+	console.log(object);
 });
 
 right.addEventListener('click', function () {
-	console.log('lkhjh');
+	if (imgChange === 0) {
+		imgChange = carouslImg.length - 1;
+	} else {
+		imgChange = imgChange - 1;
+	}
+	console.log(carouslImg.indexOf());
+
+	displayImages(imgChange);
 });
