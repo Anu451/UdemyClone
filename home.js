@@ -23,53 +23,44 @@ const categoryList = [
 		id: 3,
 		category: 'Finance & Accounting',
 		subCategory: [
-			'Web Development',
-			'Mobile Development',
-			'Programming Language',
-			'Game Development',
+			'Accounting & Bookkeeping',
+			'Cryptocurrreny & Blockchain',
+			'Finance',
+			'Investing & Trading',
 		],
 	},
 	{
 		id: 4,
 		category: 'IT & Software ',
 		subCategory: [
-			'Web Development',
-			'Mobile Development',
-			'Programming Language',
-			'Game Development',
+			'IT Certification',
+			'Hardware',
+			'Network & Security',
+			'Other IT & Software',
 		],
 	},
 	{
 		id: 5,
 		category: 'Office Productivity ',
-		subCategory: [
-			'Web Development',
-			'Mobile Development',
-			'Programming Language',
-			'Game Development',
-		],
+		subCategory: ['Microsoft', 'Apple', 'Google', 'SAP'],
 	},
 	{
 		id: 6,
 		category: 'Design',
-		subCategory: [
-			'Web Development',
-			'Mobile Development',
-			'Programming Language',
-			'Game Development',
-		],
+		subCategory: ['Web Design', 'Graphic Designing', 'Game Designign', '3D'],
 	},
 	{
 		id: 7,
 		category: 'Marketing',
 		subCategory: [
-			'Web Development',
-			'Mobile Development',
-			'Programming Language',
-			'Game Development',
+			'Digital Marketing',
+			'Search Engine Optimization',
+			'Branding',
+			'Maeketing Fundamentals',
 		],
 	},
 ];
+
 // Carousl Images
 
 const carouslImg = ['./bgimg.jpg', './slide2.png', './slide3.png'];
@@ -127,9 +118,9 @@ function myFunction(e) {
 			return item;
 		}
 	});
-	let subDisplay = filterItem.map(function (item) {
+	let subDisplay = filterItem.flatMap(function (item) {
 		let subItem = item.subCategory;
-		// console.log(subItem);
+		console.log(subItem);
 		let subMap = subItem.map(function (sub) {
 			return `<li>${sub}</li>`;
 		});
@@ -181,3 +172,14 @@ right.addEventListener('click', function () {
 
 	displayImages(imgChange);
 });
+
+// const categoryFilter = [];
+// const filterCategory = categoryList.forEach(function (item) {
+// 	const store = item.subCategory;
+// 	const storeSub = store.forEach(function (sub) {
+// 		categoryFilter.push(sub);
+// 		// console.log(sub);
+// 	});
+// });
+
+// console.log(categoryFilter);

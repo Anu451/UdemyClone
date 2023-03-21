@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		.courseDisplay {
+			width: 200px;
+		}
+		.title {
+			display: flex;
+			justify-content: space-between;
+		}
+		.cart {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+	<body>
+		<div class="course"></div>
+		<div class="display"></div>
+
+		<script>
+			const course = [
+				{
+					id: 1,
+					course: 'FrontEnd',
+					Details:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+					Price: '399/-',
+				},
+				{
+					id: 2,
+					course: 'BackEnd',
+					Details:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+					Price: '499/-',
+				},
+				{
+					id: 3,
+					course: 'Finance',
+					Details:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+					Price: '199/-',
+				},
+			];
+
+			const cousecard = document.querySelector('.course');
+			let add = document.querySelector('.btnAdd');
+			const getItem = document.querySelector('.display');
+
+			function courseMap(array) {
+				let mapping = array.map(function (item) {
+					// console.log(item);
+					return `<div class='courseDisplay' id =${item.id}>
+						<div class="title">
+							<div class="courseTitle"> ${item.course}</div>
+						<div class="price">${item.Price}</div>
+							</div>
+							<div class="desc">
+								<p>${item.Details}</p>
+								</div>
+								<div class = 'cart'>
+									<button class='btnAdd' data-id="${item.course}">Add to Cart </button>
+									</div>
+
+						</div>`;
+				});
+				cousecard.innerHTML = mapping.join('');
+			}
+			courseMap(course);
+			// console.log(add.innerHTML);
+
+			cousecard.addEventListener('click', function (e) {
+				if (e.target.classList.contains('btnAdd')) {
+					const btnClicked = e.target.dataset.id;
+					const aaa = e.target.parentNode.parentNode.id;
+					console.log(aaa);
+					const store = course[aaa - 1];
+					console.log(store);
+					localStorage.setItem(`${store.course}`, JSON.stringify(store));
+					// return aaa;
+				}
+				// console.log(aaa);
+			});
+			let addcart = [];
+
+			for (i = 0; i < localStorage.length; i++) {
+				let key = localStorage.key(i);
+				let value = localStorage.getItem(key);
+				let converted = JSON.parse(value);
+				addcart.push({ key: key, value: converted });
+			}
+			console.log(addcart);
+		</script>
+	</body>
+</html>
