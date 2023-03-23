@@ -60,6 +60,37 @@ const categoryList = [
 		],
 	},
 ];
+const subCategory = [
+	{
+		id: 101,
+		course: 'Web Development',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+		price: '199/-',
+	},
+
+	{
+		id: 102,
+		course: 'Programming language',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+		price: '199/-',
+	},
+	{
+		id: 103,
+		course: 'Game Development',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+		price: '199/-',
+	},
+	{
+		id: 104,
+		course: 'Mobile Developement',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam saepe repellat totam aperiam ullam quae corrupti aliquid, vel beatae!',
+		price: '199/-',
+	},
+];
 
 // Carousl Images
 
@@ -183,3 +214,25 @@ right.addEventListener('click', function () {
 // });
 
 // console.log(categoryFilter);
+
+const course = document.querySelector('.course');
+
+const mapSub = subCategory.map(function (item) {
+	// console.log(item.course);
+	return `<div class="course-card">
+	<div class="course-title">${item.course}</div>
+	<div class="price"> ${item.price}</div>
+	</div>
+	<div class="course-content">${item.description}</div>
+	<div class="course-btn">
+ 
+	<button data-idAdd=${item.course}>Add to cart</button></div>
+	`;
+});
+
+course.innerHTML = mapSub.join('');
+console.log(mapSub);
+
+{
+	/* <button data-idRemove=${item.course}></button> */
+}

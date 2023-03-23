@@ -129,3 +129,21 @@
 .continue {
 	font-size: 2rem;
 }
+.subCategory-course {
+	width: 100vw;
+	display: flex;
+}
+.course {
+	width: 250px;
+}
+.course-card {
+	display: flex;
+	justify-content: space-between;
+}
+.course-btn {
+	display: flex;
+	justify-content: center;
+}
+.course-content {
+	font-size: 12px;
+}
